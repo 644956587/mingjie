@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>明捷医药</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <style>
+      @import "./css/index.css";
+      @import "./css/news.css";
+    </style>
+  </head>
+  <body>
+    <div class="detailPage">
+      <div class="bannerImg"></div>
+      <div class="pageTitle"></div>
+      <div class="info">
+        <span class="title">发布时间：</span>
+        <span class="timeValue"></span>
+        <div class="numText">游览量：</div>
+        <div class="num"></div>
+      </div>
+      <div class="detailContent"></div>
+      <div class="bootomDiv">
+        <div class="preItemTitle"></div>
+        <div class="nextItemTitlt"></div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript"></script>
+  <script>
+    src = "./js/footer.js";
+  </script>
+  <script src="./js/header.js"></script>
+  <script>
+    let pageNo = 1;
+    let isEn = localStorage.getItem("isEn");
+    const parmas = getUrlParams();
+    $(() => {
+      getMenu();
+      init();
+      intPageText();
+      getDetail();
+    });
+    function intPageText() {
+      if (isEn == 2) {
+        $(".info .title").html("Publish Time");
+        $(".info .numText").html("Views：");
+      }
+    }
+    function getDetail() {
+      $(".bannerImg").html(`<img src="${parmas.url}" alt="" />`);
+      $.ajax({
+        type: "GET",
+        url:
+          "http://www.mstonepharma.com:9000/cms/content/get.do?id=" +
+          parmas.contentId,
+        success: function(res) {
+          console.log(res);
+          const d = res.data;
+          const contentDetails = d.contentDetails.replace(
+            new RegExp("/upload/1/cms", "gm"),
+            "http://www.mstonepharma.com:9000/upload/1/cms"
+          );
+          let contentDetailsEn = d.contentDetailsEn.replace(
+            new RegExp("/upload/1/cms", "gm"),
+            "http://www.mstonepharma.com:9000/upload/1/cms"
+          );
+          $(".detailContent").html(
+            isEn == 1 ? contentDetails : contentDetailsEn
+          );
+          $(".pageTitle").html(isEn == 1 ? d.contentTitle : d.contentTitleEn);
+          $(".timeValue").html(d.contentDatetime);
+          $(".num").html(d.contentHit);
+
+          if (d.preItemTitle || d.preItemTitleEn) {
+            const path = `./detail.html?contentId=${d.preItemId}&selectIndx=0&url=${parmas.url}`;
+            const a =
+              isEn == 1
+                ? `<a href="${path}" target="_blank">上一篇: ${d.preItemTitle}</a>`
+                : `<a href="${path}" target="_blank">Previous: ${d.preItemTitleEn}</a>`;
+            $(".preItemTitle").html(a);
+          }
+          if (d.nextItemTitle || d.nextItemTitleEn) {
+            const path = `./detail.html?contentId=${d.nextItemId}&selectIndx=0&url=${parmas.url}`;
+            const a =
+              isEn == 1
+                ? `<a href="${path}" target="_blank">下一篇: ${d.nextItemTitle}</a>`
+                : `<a href="${path}" target="_blank">Next: ${d.nextItemTitleEn}</a>`;
+            $(".nextItemTitlt").html(a);
+          }
+        }
+      });
+    }
+  </script>
+</html>

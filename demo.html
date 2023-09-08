@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>明捷医药</title>
+  <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+  <style>
+    @import "./css/index.css";
+    @import "./css/home.css";
+  </style>
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css"
+    integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous" />
+  <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+  <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"
+    integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="http://cdn.bootcss.com/animate.css/3.5.1/animate.min.css">
+  </link>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+
+<body>
+ <!-- <div class="tabs-wrap overflow-hidden">
+    <div class="tabs overflow-hidden">
+        <div class="item active" onclick="changeTab(0)">tab1</div>
+        <div class="item" onclick="changeTab(1)">tab2</div>
+        <div class="item" onclick="changeTab(2)">tab3</div>
+    </div>
+    <div class="tabs-content active">1</div>
+    <div class="tabs-content">2</div>
+    <div class="tabs-content">3</div>
+ </div> -->
+ <!-- <div class="contactUs"></div> -->
+
+<div class="stepDiv">
+    <div class="step">
+        <ul>
+            <li></li>
+            <li>
+                <div class="stepImg"></div>
+                <div class="stepInfo">
+                    <div class="day">2023.09.04</div>
+                    <div class="desc">神东智慧园区神东智慧园区神东智慧园区</div>
+                </div>
+                <div class="stepLine"></div>
+                <div class="ciral"></div>
+            </li>
+            <li>
+                <div class="stepImg"></div>
+                <div class="stepInfo">
+                    <div class="day">2023.09.04</div>
+                    <div class="desc">神东智慧园区神东智慧园区神东智慧园区</div>
+                </div>
+                <div class="stepLine"></div>
+                <div class="ciral"></div>
+            </li>
+            <li>
+                <div class="stepImg"></div>
+                <div class="stepInfo">
+                    <div class="day">2023.09.04</div>
+                    <div class="desc">神东智慧园区神东智慧园区神东智慧园区</div>
+                </div>
+                <div class="stepLine"></div>
+                <div class="ciral"></div>
+            </li>
+            <li>
+                <div class="stepImg"></div>
+                <div class="stepInfo">
+                    <div class="day">2023.09.04</div>
+                    <div class="desc">神东智慧园区神东智慧园区神东智慧园区</div>
+                </div>
+                <div class="stepLine"></div>
+                <div class="ciral"></div>
+            </li>
+            <li></li>
+        </ul>
+    </div>
+</div>
+<div id="carousel" class="carousel-wrap">
+    <el-carousel
+    :interval="2000"
+    arrow="always"
+    :autoplay="false"
+    ref="carousel"
+  >
+    <el-carousel-item v-for="(item, k) in itemList" :key="k">
+        <ul class="item">
+            <li v-for="i,index in item" :key="index">{{i}}</li>
+        </ul>
+
+    </el-carousel-item>
+      
+    </el-carousel>
+</div>
+</body>
+<script src="./js/header.js"></script>
+<script src="./js/vue.min.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
+<script type="text/javascript">
+
+    // const changeTab = index =>{
+    //     $('.tabs-content').each(function () {
+    //         $(this).removeClass('active')
+    //     })
+    //     $('.tabs-wrap .item').each(function () {
+    //         $(this).removeClass('active')
+    //         $('.tabs-wrap .item').eq(index).addClass('active')
+    //         $('.tabs-content').eq(index).addClass('active')
+    //     })
+    // }
+</script>
+<script>
+    var vmform = new Vue({
+        el: "#carousel",
+        data: {
+            itemList:[
+                [1,2,3,4],
+                [5,6,7,8],
+                [9,10,11,12]
+            ]
+        },
+        created: function() {
+            console.log(333);
+        },
+        mounted: function() {
+           
+        },
+        methods: {
+           
+        }
+    });
+</script>
+</html>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>明捷医药</title>
+  <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+  <style>
+    @import "./css/index.css";
+    @import "./css/home.css";
+  </style>
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css"
+    integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous" />
+  <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+  <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"
+    integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="http://cdn.bootcss.com/animate.css/3.5.1/animate.min.css">
+  </link>
+</head>
+
+<body>
+  <div class="header-wrap">
+    <div class="menu-wrap"></div>
+    <div class="banner homeBanner">
+      <div class="bg"></div>
+      <div class="bannerText">
+        <div class="crumbInfo">我们的核心价值观</div>
+        <div class="name">诚实敬业 共苦共享</div>
+        <div class="name">做对的事 把事最好</div>
+        <div class="dataList">
+          <div class="item">
+            <div class="datanum">2253<span>+</span></div>
+            <div class="title">公司关键数据</div>
+          </div>
+          <div class="item">
+            <div class="datanum">2253<span>+</span></div>
+            <div class="title">公司关键数据</div>
+          </div>
+          <div class="item">
+            <div class="datanum">2253<span>+</span></div>
+            <div class="title">公司关键数据</div>
+          </div>
+          <div class="item">
+            <div class="datanum">2253<span>+</span></div>
+            <div class="title">公司关键数据</div>
+          </div>
+        </div>
+      </div>
+      <ul class="hiSlider hiSlider3">
+        <li class="hiSlider-item">
+          <img src="https://img0.baidu.com/it/u=2836106604,642742194&fm=253&fmt=auto&app=120&f=JPEG?w=1280&h=800" />
+        </li>
+        <li class="hiSlider-item">
+          <img src="https://img0.baidu.com/it/u=3222021984,1769003772&fm=253&fmt=auto&app=120&f=JPEG?w=1422&h=800" />
+        </li>
+      </ul>
+      <!-- <img
+          src="http://www.mstonepharma.com:9000//upload/1/cms/content/1691481275431.jpg"
+          alt=""
+        /> -->
+    </div>
+  </div>
+  <div class="hots">
+    <!-- <span class="title">热门关键词：</span> -->
+    <!-- <span>药物质量研究</span>
+    <span>包材相容性研究</span>
+    <span>药物杂质分离纯化服务</span>
+    <span>容器密封性CCIT研究</span>
+    <span>2022校园招聘</span> -->
+  </div>
+  <div class="pub-content">
+    <div class="title">能力与解决方案</div>
+    <div class="info">
+      持续建立和完善符合全球药政法规的质量研究技术平台，成为能力最全、技术最强、质量最好的行业领导者。
+    </div>
+  </div>
+  <div class="solution w-100">
+    <ul class="w-100">
+      <li class="cur" onclick="select(0)">
+        <div class="title">药学研究服务</div>
+        <div class="info">创新药药学研究服务</div>
+        <div class="info">改良创新药药学研究服务</div>
+        <div class="info">仿制药药学研究服务</div>
+        <div class="info">原辅包药学研究服务</div>
+        <div class="info">药械结合产品药学研究服务</div>
+        <div class="info">上市后产品变更药学研究服务</div>
+        <div class="info">注册服务&咨询</div>
+        <div class="btn" onclick="goPage()">查看详情</div>
+      </li>
+      <li onclick="select(1)">
+        <div class="title">技术平台服务</div>
+        <div class="info">亚硝胺及基因毒研究平台</div>
+        <div class="info">药物痕量杂质研究平台</div>
+        <div class="info">制剂开发&处方筛选服务平台</div>
+        <div class="info">溶出&释放&透皮服务平台</div>
+        <div class="info">体外生物等效评价服务平台</div>
+        <div class="info">处方前及颗粒物研究平台</div>
+        <div class="info">杂质鉴定及对照品制备平台</div>
+        <div class="info">参比制剂反向分析平台</div>
+        <div class="info">生物药质量研究服务平台</div>
+        <div class="info">微生物及公用系统验证平台</div>
+        <div class="btn" onclick="goPage()">查看详情</div>
+      </li>
+      <li onclick="select(2)">
+        <div class="title">分析方法服务</div>
+        <div class="info">分析方法开发&验证&转移服务</div>
+        <div class="info">分方法确认服务</div>
+        <div class="info">分析方法复核&比对服务</div>
+        <div class="info">分析方法缺陷调查&优化服务</div>
+        <div class="info">典型方法合集</div>
+        <div class="btn" onclick="goPage()">查看详情</div>
+      </li>
+      <li onclick="select(3)">
+        <div class="title">包材研究服务</div>
+        <div class="info">包材相容性</div>
+        <div class="info">容器密封性</div>
+        <div class="info">YBB材质研究</div>
+        <div class="btn">查看详情</div>
+      </li>
+      <li onclick="select(4)">
+        <div class="title">标准测试服务</div>
+        <div class="info">中国药典ChP</div>
+        <div class="info">美国药典USP/NF</div>
+        <div class="info">欧洲药典EP</div>
+        <div class="info">英国药典BP</div>
+        <div class="info">日本&韩国&印度药典JP/KP/IP</div>
+        <div class="info">国际药典WHO</div>
+        <div class="info">部颁标准&地方标准&企业标准</div>
+        <div class="info">药包材标准YBB</div>
+        <div class="btn" onclick="goPage()">查看详情</div>
+      </li>
+      <li onclick="select(5)">
+        <div class="title">其他服务</div>
+        <div class="info">体外结合比对研究</div>
+        <div class="info">临床配伍研究</div>
+        <div class="info">环糊精包合研究</div>
+        <div class="info">分片研究</div>
+        <div class="info">鼻胃管给药比对研究</div>
+        <div class="btn" onclick="goPage()">查看详情</div>
+      </li>
+    </ul>
+  </div>
+  <div class="server-wrap">
+    <div class="pub-content">
+      <div class="title">服务领域</div>
+      <div class="info">
+        打造成为全球医药健康产业领域中能力和技术最为卓越、涵盖范围最广泛、深度最深入的平台
+      </div>
+    </div>
+    <div class="serversInfo">
+      <ul>
+        <li>
+          <div class="icon">
+            <img src="./img/化@2x.png" alt="" />
+          </div>
+          <div class="name">化学药</div>
+          <div class="info">
+            基于前沿科技，经深入研究开发，为治疗疾病提供全新机制或显著改进，具备高效安全性的药物，为医疗领域带来突破性进展。
+          </div>
+          <div class="btn">了解更多 ></div>
+        </li>
+        <li>
+          <div class="icon">
+            <img src="./img/02@2x.png" alt="" />
+          </div>
+          <div class="name">生物药</div>
+          <div class="info">
+            基于前沿科技，经深入研究开发，为治疗疾病提供全新机制或显著改进，具备高效安全性的药物，为医疗领域带来突破性进展。
+          </div>
+          <div class="btn">了解更多 ></div>
+        </li>
+        <li>
+          <div class="icon">
+            <img src="./img/细@2x.png" alt="" />
+          </div>
+          <div class="name">细胞及基因疗法</div>
+          <div class="info">
+            一种创新的治疗方法，通过修改患者体内的细胞或基因，修复、替换或增强其功能，以治疗遗传性疾病、癌症等疾病。这项技术可以针对个体的遗传特征进行定制化治疗，为患者提供更有效、个体化的医疗解决方案。
+          </div>
+          <div class="btn">了解更多 ></div>
+        </li>
+        <li>
+          <div class="icon">
+            <img src="./img/医@2x.png" alt="" />
+          </div>
+          <div class="name">医疗器械</div>
+          <div class="info">
+            基于前沿科技，经深入研究开发，为治疗疾病提供全新机制或显著改进，具备高效安全性的药物，为医疗领域带来突破性进展。
+          </div>
+          <div class="btn">了解更多 ></div>
+        </li>
+        <li>
+          <div class="icon">
+            <img src="./img/大@2x.png" alt="" />
+          </div>
+          <div class="name">大健康产品</div>
+          <div class="info">
+            基于前沿科技，经深入研究开发，为治疗疾病提供全新机制或显著改进，具备高效安全性的药物，为医疗领域带来突破性进展。
+          </div>
+          <div class="btn">了解更多 ></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="pub-content">
+    <div class="title">新闻资讯</div>
+    <div class="info">
+      了解明捷医药最新资讯
+    </div>
+  </div>
+  <div class="news">
+    <div class="top">
+      <div class="name animated"></div>
+    </div>
+    <div class="bottom">
+      <div class="info animated"></div>
+      <div class="btn">查看详情</div>
+    </div>
+    <div class="imgDiv"></div>
+    <div class="ciral">
+      <span class="active" onclick="checkNew(0)"></span>
+      <span onclick="checkNew(1)"></span>
+      <span onclick="checkNew(2)"></span>
+    </div>
+  </div>
+  <div class="contactUs"></div>
+  <div class="footerWrap"></div>
+</body>
+<script src="./js/header.js"></script>
+<script src="./js/jquery.hiSlider.min.js"></script>
+<script type="text/javascript">
+  let newList = [];
+  setTimeout(() => {
+    getHots()
+    getList();
+  }, 100);
+  function select(index) {
+    $(".solution ul li").each(function () {
+      $(this).removeClass("cur");
+      $(".solution ul li").eq(index).addClass("cur");
+    });
+  }
+  $(".hiSlider3").hiSlider({
+    isFlexible: true,
+    isSupportTouch: true,
+    titleAttr: function (curIdx) {
+      return $("img", this).attr("alt");
+    }
+  });
+  const goPage = () => {
+    const url = `./solution.html?type=1&serversName=药学研究服务`;
+    window.location.href = url;
+  };
+  var num = 0;
+  var timer = setInterval(function () {
+    num++;
+    getTime();
+    if (num === 2) {
+      //清除定时器
+      num = -1;
+      // clearInterval(timer)
+    }
+  }, 8000);
+  function getTime() {
+    checkNew(num)
+  }
+  function getList() {
+    post('cms/content/list.do',{
+        contentCategoryId: 200,
+        pageNo: 1,
+        pageSize: 3
+      },function(data) {
+        newList = data.rows || [];
+        checkNew(0);
+      })
+  }
+  function getHots() {
+    post('cms/content/list.do',{
+        contentCategoryId: 183,
+        pageNo: 1,
+        pageSize: 50
+      },function(data) {
+        const list = data.rows || [];
+        let html = `<span class="title">${isEn == 1 ? '热门关键词' : 'Top Keywords'}：</span>`
+        list.forEach(i => {
+          html += `<span>${isEn == 1 ? i.contentTitle : i.contentTitleEn}</span>`
+        });
+        $('.hots').html(html)
+      })
+  }
+  function checkNew(index) {
+    num = index
+    // clearInterval(timer);
+    // timer();
+    $(".news .name").html('')
+    $(".news .info").html('')
+    $(".news .name").removeClass('fadeInLeft fadeIn')
+    $(".news .info").removeClass('fadeInRight')
+    $(".news img").removeClass('animated fadeIn')
+    setTimeout(() => {
+      const i = newList[index];
+      $(".ciral span").each(function () {
+        $(this).removeClass("active");
+        // 对每个新元素进行操作
+        $(".ciral span")
+          .eq(index)
+          .addClass("active");
+      });
+      $(".news .name").html(`${isEn == 1 ? i.contentTitle : i.contentTitleEn}`);
+      $(".news .info").html(
+        `${isEn == 1 ? i.contentDescription : i.contentDescriptionEn}`
+      );
+      $(".imgDiv").html(`<img src="${showUrl(i.contentImg)}"/>
+        `);
+      $(".news .name").addClass('fadeInLeft fadeIn')
+      $(".news .info").addClass('fadeInRight')
+      $(".news img").addClass('animated fadeIn')
+    }, 10);
+  }
+</script>
+
+</html>

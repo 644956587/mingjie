@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html style="background: #F5F7FA">
+  <head>
+    <meta charset="utf-8" />
+    <title>明捷医药</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <style>
+      @import "./css/index.css";
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css"
+      integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+      crossorigin="anonymous"
+    />
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script
+      src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"
+      integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body style="background: #F5F7FA">
+    <div class="header-wrap">
+      <div class="menu-wrap"></div>
+      <div class="banner">
+        <div class="bg"></div>
+        <img
+          src="https://img0.baidu.com/it/u=2836106604,642742194&fm=253&fmt=auto&app=120&f=JPEG?w=1280&h=800"
+        />
+        <div class="bannerText">
+          <div class="crumbInfo">能力与解决方案</div>
+          <div class="name">药学研究服务</div>
+          <div class="desc">
+            我们专注于提供高质量的药学研究服务，为医药领域的创新和发展做出贡献。通过我们的专业团队和先进设施，我们致力于支持药物研发的各个阶段，从药物发现到临床试验，为客户提供全面的解决方案。
+          </div>
+        </div>
+      </div>
+    </div>
+    <ol class="crumb"></ol>
+    <div class="seversTypeList">
+      <ul>
+        <li>
+          <div class="icon">
+            <img src="./img/大@2x.png" alt="" />
+          </div>
+          <div class="name">创新药药学研究服务</div>
+          <div class="info">
+            提供创新药物研究，药物分析、动力学等服务，定制解决方案，助力医药创新。
+          </div>
+          <div class="btn" onclick="goPage('创新药药学研究服务')">
+            查看更多 ➜
+          </div>
+        </li>
+        <li>
+          <div class="icon">
+            <img src="./img/大@2x.png" alt="" />
+          </div>
+          <div class="name">创新药药学研究服务</div>
+          <div class="info">
+            提供创新药物研究，药物分析、动力学等服务，定制解决方案，助力医药创新。
+          </div>
+          <div class="btn" onclick="goPage('创新药药学研究服务1')">
+            查看更多 ➜
+          </div>
+        </li>
+        <li>
+          <div class="icon">
+            <img src="./img/大@2x.png" alt="" />
+          </div>
+          <div class="name">创新药药学研究服务</div>
+          <div class="info">
+            提供创新药物研究，药物分析、动力学等服务，定制解决方案，助力医药创新。
+          </div>
+          <div class="btn" onclick="goPage('创新药药学研究服务')">
+            查看更多 ➜
+          </div>
+        </li>
+        <li>
+          <div class="icon">
+            <img src="./img/大@2x.png" alt="" />
+          </div>
+          <div class="name">创新药药学研究服务</div>
+          <div class="info">
+            提供创新药物研究，药物分析、动力学等服务，定制解决方案，助力医药创新。
+          </div>
+          <div class="btn" onclick="goPage('创新药药学研究服务')">
+            查看更多 ➜
+          </div>
+        </li>
+        <li>
+          <div class="icon">
+            <img src="./img/大@2x.png" alt="" />
+          </div>
+          <div class="name">创新药药学研究服务</div>
+          <div class="info">
+            提供创新药物研究，药物分析、动力学等服务，定制解决方案，助力医药创新。
+          </div>
+          <div class="btn" onclick="goPage('创新药药学研究服务')">
+            查看更多 ➜
+          </div>
+        </li>
+        <li>
+          <div class="icon">
+            <img src="./img/大@2x.png" alt="" />
+          </div>
+          <div class="name">创新药药学研究服务</div>
+          <div class="info">
+            提供创新药物研究，药物分析、动力学等服务，定制解决方案，助力医药创新。
+          </div>
+          <div class="btn" onclick="goPage()">查看更多 ➜</div>
+        </li>
+        <li>
+          <div class="icon">
+            <img src="./img/大@2x.png" alt="" />
+          </div>
+          <div class="name">创新药药学研究服务</div>
+          <div class="info">
+            提供创新药物研究，药物分析、动力学等服务，定制解决方案，助力医药创新。
+          </div>
+          <div class="btn" onclick="goPage('创新药药学研究服务')">
+            查看更多 ➜
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="solutionFrom">
+      <div class="contactUs"></div>
+    </div>
+    <div class="footerWrap"></div>
+  </body>
+  <script src="./js/header.js"></script>
+  <!-- <script src="./js/form.js"></script>
+  <script src="./js/footer.js"></script> -->
+  <script type="text/javascript">
+    $(() => {
+      appednCrumb();
+      // appendHeader();
+      // appendForm();
+      // appendFooter();
+    });
+    function select(index) {
+      $(".solution ul li").each(function() {
+        $(this).removeClass("cur");
+        // 对每个新元素进行操作
+        $(".solution ul li")
+          .eq(index)
+          .addClass("cur");
+      });
+    }
+    const goPage = str => {
+      console.log(11);
+      const threeName = encodeURIComponent(str);
+      const url = `./solutionType1.html?type=1&serversName=药学研究服务&threeName=${threeName}&rejectUrl=${window.location.href}`;
+      window.location.href = url;
+    };
+    function appednCrumb() {
+      const p = getUrlParams();
+      console.log(p, "p");
+
+      $(".crumb").append(`
+      <li>
+        <a href="./index.html">首页</a
+        ><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+      </li>
+      <li>
+        <a href="./index.html">能力与解决方案</a
+        ><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+      </li>
+      <li>
+          ${decodeURIComponent(getUrlParams().serversName)}
+      </li>
+      `);
+    }
+  </script>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html style="background: #F5F7FA">
+
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+  <style>
+    @import "./css/index.css";
+  </style>
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css"
+    integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous" />
+  <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+  <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"
+    integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="header-wrap">
+      <div class="menu-wrap"></div>
+      <div class="banner">
+        <div class="bg"></div>
+        <img
+          src="https://img0.baidu.com/it/u=2836106604,642742194&fm=253&fmt=auto&app=120&f=JPEG?w=1280&h=800"
+        />
+        <div class="bannerText">
+          <div class="crumbInfo">关于我们</div>
+          <div class="name">团队管理</div>
+        </div>
+      </div>
+    </div>
+  <div class="w-1350">
+    <div class="Layoutlr">
+      <div class="left"></div>
+      <div class="right">
+
+        <div class="titleInfo">
+          <div class="title mjcsr">明捷医药创始人</div>
+          <div class="line"></div>
+        </div>
+        <div class="onePeople">
+          <div class="bg"></div>
+          <div class="left-info"></div>
+          <div class="right-info">
+            <div class="name-item">
+              <div class="name"></div>
+              <div class="zw"></div>
+            </div>
+            <div class="enName"></div>
+            <div class="infoList">
+              <div class="list"></div>
+            </div>
+          </div>
+        </div>
+        <div class="titleInfo">
+          <div class="title hxty">核心团队</div>
+          <div class="line"></div>
+        </div>
+        <div class="morePeople">
+          <ul>
+           
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footerWrap"></div>
+</body>
+<script src="./js/header.js"></script>
+<script type="text/javascript">
+  $(() =>{
+    appenLayout2Menu(2)
+    if(isEn == 2) {
+      $('.hxty').html('Core team')
+      $('.mjcsr').html('Milestone Pharma Founder')
+    }
+  })
+  setTimeout(() => {
+    getList();
+  }, 50);
+  const getList = _ => {
+    post('cms/content/list.do', {
+      contentCategoryId: 179,
+      pageNo: 1,
+      pageSize: 500
+    }, function (data) {
+      const list = data.rows || [];
+      if(list.length) {
+        const i = list[0]
+        $('.onePeople .left-info').html(`<img src="${showUrl(i.contentImg)}">`)
+        $('.onePeople .name').html(`${isEn == 1 ? i.contentTitle : i.contentTitleEn}`)
+        $('.onePeople .zw').html(`${isEn == 1 ? i.contentKeyword : i.contentKeywordEn}`)
+        // $('.onePeople .enName').html(`${i.contentTitleEn}`)
+        $('.onePeople .list').html(`${isEn == 1 ? i.contentDetails : i.contentDetailsEn}`)
+      }
+      if(list.length > 1) {
+        let html = ''
+        list.forEach((i,index) => {
+          if(index >0) {
+            html+= `
+          <li>
+              <div class="lf">
+                <img src="${showUrl(i.contentImg)}" alt="">
+              </div>
+              <div class="rf">
+                <div class="name">
+                  <span>${isEn == 1 ? i.contentTitle : i.contentTitleEn}</span>
+                  <span>${isEn == 1 ? i.contentKeyword : i.contentKeywordEn}</span>
+                </div>
+                <div class="title">${isEn == 1 ? i.contentDescription : i.contentDescriptionEn}</div>
+                <div class="desc">${isEn == 1 ? i.contentDetails : i.contentDetailsEn}</div>
+              </div>
+            </li>
+          `
+          }
+        
+        });
+        $('.morePeople ul').html(html)
+      }
+    })
+  }
+</script>
+
+</html>

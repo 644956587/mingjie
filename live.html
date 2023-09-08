@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>明捷医药</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <style>
+      @import "./css/index.css";
+      @import "./css/news.css";
+    </style>
+  </head>
+  <body>
+    <div class="news">
+      <div class="news-tabs">
+        <div class="news-tabs-left">
+          <div class="details-lef-title">新闻中心</div>
+          <div class="details-classification">
+            <ul>
+              <li>
+                <a href="./news.html">公司新闻</a>
+                <i></i>
+              </li>
+              <li>
+                <a href="./activities.html">线下活动</a>
+                <i></i>
+              </li>
+              <li class="cur">
+                <a>直播专栏</a>
+                <i></i>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="news-tabs-right">
+          <div class="details-r-ol">
+            <ul>
+              <li>
+                <a class="details-home" href="/" class="details-home"></a>
+              </li>
+              <li>
+                <a href="/news.html">新闻中心</a>
+              </li>
+              <li>
+                <strong>公司新闻</strong>
+              </li>
+            </ul>
+          </div>
+          <div class="details-content">
+            <div class="content-title">公司新闻</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript"></script>
+  <script>
+    src = "./js/footer.js";
+  </script>
+  <script src="./js/header.js"></script>
+  <script>
+    let pageNo = 1;
+    let isEn = localStorage.getItem("isEn");
+    $(() => {
+      getMenu();
+      init();
+      intPageText();
+      getBannerList();
+      getList();
+    });
+    function intPageText() {
+      if (isEn == 2) {
+        // $(".details-lef-title").html("News Center");
+        // $(".content-title").html("Company News");
+        // $(".text1").html("Company News");
+        // $(".text2").html("Offline Activities");
+        // $(".text3").html("Live Column");
+      }
+    }
+    function getBannerList() {
+      $.ajax({
+        type: "GET",
+        url: "http://www.mstonepharma.com:9000//cms/category/get.do?id=200",
+        success: function(res) {
+          console.log(res);
+        }
+      });
+    }
+    function getList() {
+      $.ajax({
+        type: "POST",
+        url: "http://www.mstonepharma.com:9000//cms/content/list.do",
+        data: {
+          contentCategoryId: 202,
+          pageNo: pageNo,
+          pageSize: 10
+        },
+        contentType: "application/x-www-form-urlencoded",
+        success: function(data) {
+          console.log(data, "data----");
+          const list = data.data.rows || [];
+          console.log(list, "list");
+
+          let str = "";
+          list.forEach(i => {
+            str += `
+                  <li>
+                   <div class="name"><span>${
+                     isEn == 1 ? i.contentKeyword : i.contentKeywordEn
+                   }</span>${
+              isEn == 1 ? i.contentTitle : i.contentTitleEn
+            }</div>
+                   <div class="remark">${
+                     isEn == 1 ? i.contentDescription : i.contentDescriptionEn
+                   }</div>
+                   <div class="time">${i.contentDatetime}</div>
+                 </li>
+               `;
+          });
+          $(".listPage").append(str);
+          if (list.length < 10) {
+            $(".more").html("");
+          }
+        }
+      });
+    }
+    function changePage() {
+      console.log(222);
+
+      pageNo++;
+      getList();
+    }
+  </script>
+</html>

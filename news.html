@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>明捷医药</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css"
+      integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+      crossorigin="anonymous"
+    />
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script
+      src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"
+      integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      @import "./css/index.css";
+      @import "./css/news.css";
+    </style>
+  </head>
+  <body>
+    <div class="header"></div>
+    <div class="isEn"></div>
+    <div class="news">
+      <div class="news-tabs">
+        <div class="news-tabs-left">
+          <div class="details-lef-title">新闻中心</div>
+          <div class="details-classification">
+            <ul>
+              <li class="cur">
+                <a class="text1">公司新闻</a>
+                <i></i>
+              </li>
+              <li>
+                <a class="text2" href="./activities.html">线下活动</a>
+                <i></i>
+              </li>
+              <li>
+                <a class="text3" href="./live.html">直播专栏</a>
+                <i></i>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="news-tabs-right">
+          <div class="details-r-ol">
+            <ul>
+              <li class="cur">
+                <a>公司新闻</a>
+                <i></i>
+              </li>
+              <li>
+                <a>线下活动</a>
+                <i></i>
+              </li>
+              <li>
+                <a>直播专栏</a>
+                <i></i>
+              </li>
+            </ul>
+          </div>
+          <div class="details-content">
+            <div class="content-title">公司新闻</div>
+            <ul class="listPage">
+              <li>
+                <div class="name"></div>
+                <div class="remark"></div>
+                <div class="time"></div>
+              </li>
+            </ul>
+            <div class="more" onclick="changePage()">查看更多</div>
+            <!-- <nav aria-label="Page navigation">
+              <ul class="pagination">
+                <li>
+                  <a href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li>
+                  <a href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              </ul>
+            </nav> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript"></script>
+  <script src="./js/header.js"></script>
+  <script>
+    src = "./js/footer.js";
+  </script>
+  <script>
+    let pageNo = 1;
+    let bannerImg = "";
+    let isEn = localStorage.getItem("isEn");
+    $(() => {
+      getMenu();
+      init();
+      intPageText();
+      getBannerList();
+      getList();
+    });
+    function intPageText() {
+      if (isEn == 2) {
+        $(".details-lef-title").html("News Center");
+        $(".content-title").html("Company News");
+        $(".text1").html("Company News");
+        $(".text2").html("Offline Activities");
+        $(".text3").html("Live Column");
+      }
+    }
+    function getBannerList() {
+      $.ajax({
+        type: "GET",
+        url: "http://www.mstonepharma.com:9000//cms/category/get.do?id=200",
+        success: function(res) {
+          console.log(res);
+          const img = res.data.categoryImg;
+          if (img) {
+            bannerImg = JSON.parse(img)[0].path;
+          }
+          console.log(bannerImg, "img");
+        }
+      });
+    }
+    function getList() {
+      $.ajax({
+        type: "POST",
+        url: "http://www.mstonepharma.com:9000//cms/content/list.do",
+        data: {
+          contentCategoryId: 200,
+          pageNo: pageNo,
+          pageSize: 10
+        },
+        contentType: "application/x-www-form-urlencoded",
+        success: function(data) {
+          console.log(data, "data----");
+          const list = data.data.rows || [];
+          console.log(list, "list");
+
+          let str = "";
+          list.forEach(i => {
+            str += `
+               <li onclick="toDetail(${i.id})">
+                <div class="name"><span>${
+                  isEn == 1 ? i.contentKeyword : i.contentKeywordEn
+                }</span>${isEn == 1 ? i.contentTitle : i.contentTitleEn}</div>
+                <div class="remark">${
+                  isEn == 1 ? i.contentDescription : i.contentDescriptionEn
+                }</div>
+                <div class="time">${i.contentDatetime}</div>
+              </li>
+            `;
+          });
+          $(".listPage").append(str);
+          if (list.length < 10) {
+            $(".more").html("");
+          }
+        }
+      });
+    }
+    function changePage() {
+      console.log(222);
+
+      pageNo++;
+      getList();
+    }
+    function toDetail(id) {
+      const path = `./detail.html?contentId=${id}&selectIndx=0&url=http://www.mstonepharma.com:9000${bannerImg}`;
+      window.open(path);
+    }
+  </script>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <style>
+        @import "./css/index.css";
+        @import "./css/home.css";
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            border: 0;
+        }
+
+        #container {
+            width: 800px;
+            height: 130px;
+            margin: 100px auto;
+            border: 3px solid blue;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #container ul {
+            list-style: none;
+            width: 10000px;
+            position: absolute;
+            left: -1050;
+        }
+
+        #container ul li {
+            float: left;
+            margin-right: 20px;
+            border: 1px solid #ddd;
+            height: 130px;
+            width: 130px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous" />
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/animate.css/3.5.1/animate.min.css">
+    </link>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+
+<body>
+    <div id="container">
+        <ul id="content">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>11</li>
+            <li>21</li>
+            <li>31</li>
+            <li>41</li>
+            <li>51</li>
+            <li>61</li>
+            <li>71</li>
+        </ul>
+    </div>
+    <input type="text" class="input-code" placeholder="验证码">
+    <span class="code" title='点击切换'></span>
+</body>
+<script src="./js/header.js"></script>
+<script src="./js/vue.min.js"></script>
+<script src="./js/jquery.code.js"></script>
+<!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
+<script type="text/javascript">
+    $(function () {
+        $('.code').createCode({
+            len: 4
+        });
+    });
+    $('.input-code').blur(function () {
+        if ($(this).val().toLowerCase() !== $('.code').children('input').val().toLowerCase()) {
+            alert('验证码不正确')
+            $('.code').createCode({
+            len: 4
+        });
+        } else {
+            alert('验证通过')
+        }
+    })
+    /* window.onload比 $(function(){}) 加载的更晚一些，这样那些宽度的计算在Chrome中就可以准确计算了*/
+    window.onload = function () {
+
+        /*计算一个segment的宽度*/
+
+        var segmentWidth = 0;
+        $("#container #content li").each(function () {
+            segmentWidth += $(this).outerWidth(true);
+        });
+        // $("#container #content li").clone().appendTo($("#container #content"));
+        run(0);
+
+        function run(interval) {
+            // -1050 ==> 0
+
+            // console.log(-segmentWidth, '-segmentWidth');
+            $("#container #content").animate({ "left": 0 }, interval, "linear", function () {
+                console.log(222);
+                $("#container #content").css("left", -1050);
+                run(8000);
+            });
+        }
+
+        // $("#container").mouseenter(function () {
+        //     $("#container #content").stop();
+        // }).mouseleave(function () {
+        //     var passedCourse = -parseInt($("#container #content").css("left"));
+        //     var time = 6000 * (1 - passedCourse / segmentWidth);
+        //     run(time);
+        // });
+    };
+
+</script>
+
+</html>

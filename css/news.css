@@ -1,0 +1,121 @@
+.news {}
+
+.news-tabs {
+    width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    margin-top: 20px;
+}
+
+.news-tabs-left {
+    width: 400px;
+    height: 800px;
+    background: url(../img/l-bj.png) no-repeat bottom center;
+    background-color: #f1f5fe;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-right: 50px
+}
+
+.details-lef-title {
+    line-height: 56px;
+    background-color: #155797;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+}
+
+.details-classification {
+    padding: 20px;
+
+}
+
+.news-tabs-left li {
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 20px;
+    border: 1px solid #e3ebfe;
+    padding: 0px 20px;
+    font-size: 18px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    line-height: 44px
+}
+
+.news-tabs-left li a {
+    display: block
+}
+
+.news-tabs-left li i {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background: url(../img/cnt-icon.png) no-repeat;
+    background-position: -48px 0;
+    cursor: pointer;
+    right: 15px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.news-tabs-left li.cur {
+    background-color: #f08410;
+    color: #fff
+}
+
+.news-tabs-left li.cur a {
+    color: #fff
+}
+
+.news-tabs-left li.cur i {
+    background-position: -72px 0;
+}
+
+.news-tabs-right {
+    flex: 1;
+    overflow: hidden;
+}
+
+.details-r-ol {
+    background-color: #f1f5fe;
+    border-radius: 20px;
+    padding: 10px 20px;
+    text-align: right;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.details-r-ol li {
+    display: inline-block;
+}
+
+.details-r-ol li a::after {
+    content: ">";
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.details-r-ol li a.details-home {
+    width: 24px;
+    height: 24px;
+    display: block;
+    background: url(../img/cnt-icon.png) no-repeat left top;
+    background-position: 0px -3px;
+    padding-left: 21px;
+    margin-right: 17px;
+}
+
+.content-title {
+    font-size: 30px;
+    color: #041a3e;
+    padding: 20px 0;
+    border-bottom: 2px solid #e5e8eb;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.listPage li {
+    margin-bottom: 30px
+}
